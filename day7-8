@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding:0;
+      }
+
+      .container {
+        width: 960px;
+        margin:0 auto;
+      }
+
+      header {
+        width: 100%;
+        height: 70px;
+        background-color: #5b5b5b;
+      }
+      h2 {
+        height: 70px;
+        width: 60px;
+        float: left;
+        line-height: 70px;
+        text-align: center;
+        color: white;
+      }
+      p {
+        float: right;
+        display: inline-block;
+      }
+      a {
+        color: white;
+      }
+
+      .clearfix:before, .clearfix:after {
+        display: table; 
+        content: "";
+      }
+      .clearfix:after {
+        clear: both;
+      }
+      .clearfix {
+        *zoom: 1;
+      }
+
+      .banner {
+        width: 100%;
+        height: 300px;
+        background-color: #7cd714;
+      }
+      ul {
+        height: 25px
+        width: 90px;
+        position: relative;
+        left: 1140px;
+        top: 260px;
+        box-sizing: border-box;
+
+      }
+      ul li {
+        display: inline-block;
+        height: 25px;
+        width: 20px;
+        margin-right: 5px;
+        border: 1px solid ;
+        box-sizing: border-box;
+        text-align: center;
+        background-color: rgba(199,223,195,0.5);
+      }
+
+      .content {
+        width: 100%;
+        height: 600px;
+      }
+      .content nav {
+        width: 100%;
+        height: 50px;
+        padding-top: 20px;
+        border-bottom: 1px solid #c8c7c7;
+      }
+      .innav li {
+        display: inline-block;
+        height: 50px;
+        width: 100px;
+        line-height: 50px;
+        text-align: center;
+        border: 1px solid #c8c7c7;
+        border-bottom: none;
+        border-top-left-radius: 35%;
+        border-top-right-radius: 35%;
+      }
+      .zo, .zt, .zth {
+        display: flex;
+        height: 160px;
+        margin-top: 7px;
+      }
+      .zo div, .zt div, .zth div {
+        height: 100%;
+        margin-right: 5px;
+        flex: 1;
+        border: 1px solid #c8c7c7;
+        padding:80px;
+        box-sizing: border-box;
+      }
+
+      footer {
+        height: 120px;
+        background-color: gray;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="clearfix">
+      <nav class="container">
+        <h2>Logo</h2>
+        <p>
+          <a href="#">Github</a>
+          <a href="#">Register</a>
+          <a href="#">Login</a>
+        </p>
+      </nav>
+    </header>
+
+    <div class="banner">
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+      </ul>
+    </div>
+    
+    <div class="content">
+      <nav>
+        <div class="innav container">
+          <li>HOME</li>
+          <li>PROILE</li>
+          <li>ABOUT</li>
+        </div>
+      </nav>
+      <div class="zo container">
+        <div>This is Content 1</div>
+        <div>MybeContent 2</div>
+        <div>Content3</div>
+      </div>
+      <div class="zt container">
+        <div>Content4</div>
+        <div>Content5</div>
+        <div>Content6</div>
+        <div>Content7</div>
+      </div>
+      <div class="zth container">
+        <div>Content8</div>
+        <div>Content9</div>
+        <div>Content10</div>
+      </div>
+    </div>
+    <footer></footer>
+  </body>
+</html>
