@@ -52,8 +52,8 @@
         background-color: #7cd714;
       }
       ul {
-        height: 25px
-        width: 90px;
+        height: 25px;
+        width: 120px;
         position: relative;
         left: 1140px;
         top: 260px;
