@@ -210,6 +210,7 @@
 			flex: 1;
 			margin: 10px;
 			background-repeat: no-repeat;
+			background-size: 100% auto;
 		}
 		.teaone {
 			background-image: url('images/tea1.png');
@@ -223,7 +224,17 @@
 		.teafour {
 			background-image: url('images/tea4.png');
 		}
-
+		.veil {
+			height: 100%;
+			position: relative;
+			top: 0px;
+			background-color: rgba(0, 0, 0,0.7);
+			opacity: 0;
+		}
+		.veil:hover {
+  			opacity: 1;
+		}
+		
 		/*以下是sevenbox样式*/
 		.sevenbox {
 			height: 700px;
@@ -358,18 +369,18 @@
 		<div class="sixtext container">Our Awsome Crew</div>
 		<div class="insexbox container">
 			<div class="teaone tea">
-				<!-- <img src="E:/picture/tea1.png"> -->
+				<div class="veil"></div>
 			</div>
 			<div class="teatwo tea">
-				<!-- <img src="E:/picture/tea2.png"> -->
+				<div class="veil"></div>
 			</div>
 		</div>
 		<div class="insexbox container">
 			<div class="teathree tea">
-				<!-- <img src="E:/picture/tea3.png"> -->
+				<div class="veil"></div>
 			</div>
 			<div class="teafour tea">
-				<!-- <img src="E:/picture/tea4.png"> -->
+				<div class="veil"></div>
 			</div>
 		</div>
 	</div>
