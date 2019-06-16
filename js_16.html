@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		p {
+			margin-bottom: 0;
+		}
+		div {
+			font-weight: 500;
+		}
+		div span,p {
+			font-weight: 700;
+		}
+
+		h1 {
+			height: 800px;
+			width: 18%;
+			float: left;
+			background-color: skyblue;
+			margin: 0 auto;
+			text-align: center;
+			padding-top: 50px;
+			color: white;
+		}
+
+		h2 {
+			padding-top: 10px;	
+		}
+
+		h2,div {
+			width: 82%;
+			float: left;
+			padding-left: 20px;
+			box-sizing: border-box;
+		}
+		button {
+			background:rgba(255, 255, 255, 0.3);
+			border-radius: 4px;	
+		}
+		h1 div {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<h1>
+		简历<br/>
+		<button id="open">My Hobbies</button>
+		<div id="hobby">
+			看电影<br/>
+			游泳<br/>
+			射击
+		</div>
+	</h1>
+
+	<h2>基本信息</h2>
+
+	<div>
+		<span>姓名</span> 
+		张三&nbsp;&nbsp;&nbsp;&nbsp;
+		<span>性别</span>
+		男&nbsp;&nbsp;&nbsp;&nbsp;
+		<span>应聘职位</span> 
+		Web前端工程师
+	</div>
+
+	<h2>联系方式</h2>
+
+	<div>
+		<span>手机</span> 
+		12312341234&nbsp;&nbsp;&nbsp;&nbsp;
+		<span>Email</span> 
+		<a href="#">joinefe@baidu.com</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<span>个人主页</span>
+		<a href="#">Github</a>
+	</div>
+
+	<h2>能力描述</h2>
+
+	<div>
+		<p>技术能力</p> 
+		熟练掌握HTML,CSS,JavaScript<br/>
+		<p>综合能力</p> 
+		良好的沟通，主动积极，努力勤奋
+	</div>
+
+	<h2>教育经历</h2>
+
+	<div>
+		<p>本科</p>
+		百度前端技术学院小薇学院<br/> 
+		<p>研究生</p>
+		百度前端技术学院大斌学院
+	</div>
+
+	<h2>项目经验</h2>
+
+	<div>
+		<p>小度小度</p>
+		作为前端工程师角色参与了ABC组件的开发<br/>
+		<p>SAN Doc</p>
+		作为文档工程师参与了SAN Doc编写
+	</div>
+	<script type="text/javascript">
+		var open = document.getElementById('open')
+		var hobby = document.getElementById('hobby');
+		open.onclick = function(){
+			if(hobby.style.display==="block") {
+				hobby.style.display = 'none';
+			}else {
+				hobby.style.display= 'block';
+			}
+		}
+	</script>
+</body>
+
+</html>
