@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8"/>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding:0;
+		}
+		.container {
+			margin: 0 auto;
+		}
+ 
+ 		/*以下是 onebox 样式*/
+		.onetext {
+			height: 540px;
+			width: 1000px;
+		}
+		.onetext h1, .onebox h3 {
+			display: -webkit-flex;
+			display: flex;
+			color: white;
+			justify-content: center;
+		}
+		.onetext h1 {
+			font-size: 400%;
+			font-weight: lighter;
+			padding-top: 200px;
+			margin-bottom: 80px;
+		}
+		.onebox h3 {
+			font-size: 120%;
+			font-weight: lighter;
+			padding-top: 50px;
+			margin-bottom: 15px;
+		}
+		.onebox p {
+			color: #c1c0bf;
+			font-weight: lighter;
+			display: -webkit-flex;
+			display: flex;
+			justify-content: center;
+		}
+
+		.onebox {
+			width: 100%;
+			height: 1000px;
+			background-image: url(E:/picture/1bg.png);
+
+		}
+
+		.inputbox {
+			height: 250px;
+			width: 1000px;
+			box-sizing: border-box;
+			border: 1px solid #53514d;
+			border-radius: 4px;
+			
+		}
+
+		.username,.password {
+			appearance: none;
+			height: 50px;
+			width: 290px;
+			border: 1px solid #53514d;
+			box-sizing: border-box;
+			background:rgba(0, 0, 0, 0);
+			margin-right: 30px;
+			border-radius: 4px;
+			color: white;
+			padding-left: 20px;
+		}
+		.username {
+			margin-left: 100px;
+		}
+		.sign {
+			height: 50px;
+			width: 125px;
+			border-radius: 4px;
+			border: none;
+			background-color: #ffffff;
+		}
+
+		.onecontent {
+			height: 148px;
+			width: 1000px;
+		}
+		table {
+			height: 50px;
+			width: 990px;
+		}
+
+		/*以下是 twobox 样式*/
+		.twobox {
+			width: 100%;
+			height: 710px;
+		}
+
+		.twotext {
+			height: 320px;
+			width: 1000px;
+		}
+		.twotext h5, .twotext p {
+			display: flex;
+			justify-content: center;
+		} 
+		.twotext h5 {
+			padding-top: 85px;
+			margin-bottom: 35px;
+		}
+		.twotext p {
+			font-size: 200%;
+			font-weight: lighter;
+		}
+		.smallbox {
+			height: 190px;
+			width: 1000px;
+			display: flex;
+		}
+		.smallbox div {
+			flex: 1;
+		}
+
+		/*以下是threeox样式*/
+		.threebox {
+			width: 100%;
+			height: 800px;
+			background-image: url(E:/picture/threebg.png);
+		}
+
+		.threetext {
+			height: 550px;
+			width: 1000px;
+		}
+		.threetext h1 {
+			font-size: 300%;
+			font-weight: lighter;
+			padding-top: 180px;
+			margin-bottom: 40px;
+			color: white;
+		}
+		.threetext p {
+			font-weight: lighter;
+			color: white;
+		}
+		.submitbox {
+			width: 1000px;
+		}
+		.submitbox input {
+			height: 60px;
+			width: 240px;
+			color: white;
+			border-radius: 4px;
+			appearance: none;
+			background:rgba(0, 0, 0, 0);
+			border: 1px solid #53514d;
+			margin-right: 30px;
+		}
+		.submitbox input:hover {
+			background-color: white;
+			color: black;
+		}
+
+		/*以下是fourbox样式*/
+		.fourbox {
+			width: 100%;
+			height: 580px;
+			border: none;
+			background-image: url(E:/picture/fourbg.png);
+		}
+
+		/*以下是fivebox样式*/
+		.fivebox {
+			height: 1010px;
+			width: 100%;
+			display: -webkit-flex;
+			display: flex;
+			flex-direction: column;
+		}
+		.fone, .ftwo {
+			flex: 1;
+			margin: 0 auto;
+			width: 1000px;
+		}
+
+		/*以下是sixbox样式*/
+		.sixbox {
+			width: 100%;
+			height: 1085px;
+			border-top: 1px solid #53514d;
+		}
+		.sixtext {
+			height: 270px;
+			width: 1000px;
+			font-size: 200%;
+			font-weight: lighter;
+			line-height: 270px;
+			text-align: center;
+		}
+		.insexbox {
+			height: 340px;
+			width: 1000px;
+			display: flex;
+			display: -webkit-flex;
+			margin-bottom: 20px;
+		}
+		.tea {
+			flex: 1;
+			margin: 10px;
+			background-repeat: no-repeat;
+		}
+		.teaone {
+			background-image: url(E:/picture/tea1.png);
+		}
+		.teatwo {
+			background-image: url(E:/picture/tea2.png);
+		}
+		.teathree {
+			background-image: url(E:/picture/tea3.png);
+		}
+		.teafour {
+			background-image: url(E:/picture/tea4.png);
+		}
+
+		/*以下是sevenbox样式*/
+		.sevenbox {
+			height: 700px;
+			width: 100%;
+			border-top: 1px solid #53514d;
+		}
+		.inseven {
+			height: 700px;
+			width: 1000px;
+			box-sizing: border-box;
+			padding-top: 70px;
+		}
+		form {
+			height: 560px;
+			width: 470px;
+			border: 1px solid #53514d;
+			border-radius: 10px;
+		}
+		form p {
+			height: 100px;
+			width: 180px;
+			margin: 0 auto;
+			color: #4e4e4e;
+			line-height: 100px;
+			text-align: center;
+		}
+		form input,textarea {
+			appearance: none;
+			display: block;
+			width: 370px;
+			height: 50px;
+			border: 1px solid #53514d;
+			box-sizing: border-box;
+			background:rgba(0, 0, 0, 0);
+			border-radius: 4px;	
+			margin: 0 auto;
+			margin-bottom: 30px;
+			color: #989898;
+			padding-left: 20px;
+		}
+		textarea {
+			height: 140px;
+			padding-top: 20px;
+		}
+		.send {
+			padding: 0;
+			background-color: #141414;
+			color: white;
+		}
+
+		/*以下是footer样式*/
+		footer {
+			height: 410px;
+			width: 100%;
+			background-color: #141414;
+			color: white;
+		}
+		.footbox {
+			height: 400px;
+			width: 1200px;
+		}
+		table {
+			display: inline-block;
+			height: 320px;
+			width: 200px;
+			margin: 80px 40px 0 50px;
+		}
+		tr {
+			display: inline-block;
+			height: 50px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="onebox">
+		<div class="onetext container">
+			<h1>Hello World</h1>
+			<p>china is peeding up strategic plan,standards,traffic rules,laws and regulations<br/>on accident-incurred liabities for its smart car industry.Economic information</p>
+			<P>Daily reported thursday</p>
+		</div>
+		<div class="inputbox container">
+			<div class="onecontent container">
+				<h3>CREATE YOUR ACCOUNT</h3>
+				<p>IT IS ABSOLUTE FREE </p>
+			</div>
+			<input type="text" class="username" value="abcbca@baidu.com" />
+			<input type="password" class="password" placeholder="Create your password" />
+			<input type="submit" value="SIGN UP" class="sign" />
+		</div>
+	</div>
+
+	<div class="twobox">
+		<div class="twotext container">
+			<h5>BOTLOADS OF AWESOME</h5>
+			<p>Read-made, customizable, HTML</p>
+			<p>landing pagr sections</p>
+		</div>
+		<div class="smallbox container">
+			<div class="onesmall"><img src="E:\picture\images\twobox_03.png"></div>
+			<div class="twosmall"><img src="E:\picture\images\twobox_06.png"></div>
+		</div>
+		<div class="smallbox container">
+			<div class="threesmall"><img src="E:\picture\images\twobox_09.png"></div>
+			<div class="foursmall"><img src="E:\picture\images\twobox_10.png"></div>
+		</div>
+	</div>
+
+	<div class="threebox">
+		<div class="threetext container">
+			<h1>Suppotive policies<br/>for China's smart<br/>car</h1>
+			<p>China will come up with its own smart car<br/>standards. traffic rules,laws and regulations<br/>relating to safety.according to the China<br/>Industry Innovation Alliance for the Intelli-<br/>gentand Connected Vehicles</p>
+		</div>
+		<div class="submitbox container">
+			<input type="submit" value="CHEVK OUT FEATURES">
+			<input type="submit" value="TRY PRODUCT FOR FREE">
+		</div>
+	</div>
+
+	<div class="fourbox"></div>
+
+	<div class="fivebox">
+		<div class="fone">
+			<img src="E:/picture/images/five1.png">
+		</div>
+		<div class="ftwo">
+			<img src="E:/picture/images/five2.png">
+		</div>
+	</div>
+
+	<div class="sixbox">
+		<div class="sixtext container">Our Awsome Crew</div>
+		<div class="insexbox container">
+			<div class="teaone tea">
+				<!-- <img src="E:/picture/tea1.png"> -->
+			</div>
+			<div class="teatwo tea">
+				<!-- <img src="E:/picture/tea2.png"> -->
+			</div>
+		</div>
+		<div class="insexbox container">
+			<div class="teathree tea">
+				<!-- <img src="E:/picture/tea3.png"> -->
+			</div>
+			<div class="teafour tea">
+				<!-- <img src="E:/picture/tea4.png"> -->
+			</div>
+		</div>
+	</div>
+
+	<div class="sevenbox">
+		<div class="inseven container">
+			<form>
+				<p>FELL FREE TO RITE US</p>
+				<input type="text" value="E-mail">
+				<input type="text" value="Subject">
+				<textarea>Message</textarea>
+				<input type="submit" value="SEND" class="send">
+			</form>
+		</div>
+		<div class="seventext"></div>
+	</div>
+	<footer>
+		<div class="footbox container">
+		<table>
+			<tr><td>LEARN MORE</td></tr>
+			<tr><td>How it works?</td></tr>
+			<tr><td>Meeting tools</td></tr>
+			<tr><td>Live streaming</td></tr>
+			<tr><td>Contact method</td></tr>
+		</table>
+		<table>  
+			<tr><td>ABOUT US</td></tr>
+			<tr><td>About us</td></tr>
+			<tr><td>Features</td></tr>
+			<tr><td>Privacy police</td></tr>
+			<tr><td>Term&Conditions</td></tr>
+		</table>
+		<table>
+			<tr><td>SUPPORT</td></tr>
+			<tr><td>FAQ</td></tr>
+			<tr><td>Contact us</td></tr>
+			<tr><td>Live chat</td></tr>
+			<tr><td>Phone call</td></tr>
+		</table>
+		<table>
+			<tr><td>ENJOY YOUR LIFE</td></tr>
+			<tr><td>great web UI kit fordesigners,freelancers or buiness<td></tr>
+		</table>
+		</div>
+	</footer>
+</body>
+</html>
