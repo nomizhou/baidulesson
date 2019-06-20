@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<input type="text" id="name">
+	<button id="submit-btn">Submit</button>
+	<script type="text/javascript">
+		document.getElementById("submit-btn").onclick=function (){
+			var name = document.getElementById("name").value;
+			console.log(name);
+		}
+		document.onkeydown = function(){
+			switch(event.keyCode){
+				case 13:
+					var name = document.getElementById("name").value;
+					console.log(name);
+					break;
+				case 27:
+					document.getElementById("name").value="";					
+			}
+		}
+			
+	</script>
+</body>
+</html>
