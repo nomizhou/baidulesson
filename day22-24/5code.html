@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<input id="queue-input" type="text">
+	<p id="queue-cont">队列内容：apple-&gt;pear</p>    
+	<button id="in-btn">入队</button>
+	<button id="out-btn">出队</button>
+	<button id="font-btn">打印队头元素内容</button>
+	<button id="empty-btn">判断队列是否为空</button>
+
+	<script type="text/javascript">
+		var q = ["apple","pear"];
+		//队头对应最后一个元素
+		document.querySelector('#in-btn').onclick = function(){
+			var str = document.querySelector('#queue-input').value;
+			q.unshift(str);
+			document.getElementById('queue-cont').innerHTML = "队伍内容：" + q.join("-&gt;");
+		};
+		document.querySelector('#out-btn').onclick = function(){
+			q.pop();
+			document.getElementById('queue-cont').innerHTML = "队伍内容：" + q.join("-&gt;");
+		};
+		document.querySelector('#font-btn').onclick = function(){
+			alert(q[q.length -1]);
+		};
+		document.querySelector('#empty-btn').onclick = function(){
+			if(q.length === 0){
+				alert('空');
+			}else {
+				alert ('不为空');
+			}
+		};
+		//队头对应第一个元素
+		// document.querySelector('#in-btn').onclick = function(){
+		// 	var str = document.querySelector('#queue-input').value;
+		// 	q.push(str);
+		// 	document.getElementById('queue-cont').innerHTML = "队伍内容：" + q.join("-&gt;");
+		// };
+		// document.querySelector('#out-btn').onclick = function(){
+		// 	q.shift();
+		// 	document.getElementById('queue-cont').innerHTML = "队伍内容：" + q.join("-&gt;");
+		// };
+		// document.querySelector('#font-btn').onclick = function(){
+		// 	alert(q[0]);
+		// };
+		// document.querySelector('#empty-btn').onclick = function(){
+		// 	if(q.length === 0){
+		// 		alert('空');
+		// 	}else {
+		// 		alert ('不为空');
+		// 	}
+		// };
+
+		
+	</script>
+</body>
+</html>
