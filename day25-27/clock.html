@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<span id="b"></span>
+	<span id="s"></span>
+	<script type="text/javascript">
+		// document.write(Date());
+		var d = new Date();
+		function week(){
+			var d = new Date();
+			var weekday=new Array(7);
+			weekday[0]="Monday";
+			weekday[1]="星期一";
+			weekday[2]="星期二";
+			weekday[3]="星期三";
+			weekday[4]="星期四";
+			weekday[5]="星期五";
+			weekday[6]="星期六";
+			return weekday[d.getDay()];
+		};
+
+		var y = d.getMonth();
+		var r = d.getDate();
+		y = checkTime(y);
+		r = checkTime(r);
+		document.getElementById('b').innerHTML=d.getFullYear()+"年"+ y +"月"+ r +"日"+week();
+		
+		function startTime(){
+			var today=new Date();
+			var h=today.getHours();
+			var m=today.getMinutes();
+			var s=today.getSeconds();
+			// add a zero in front of numbers<10
+			var ampm = h >=12 ? "pm":"am";
+			h = h%12;
+			h = h ? h :12;
+			m=checkTime(m);
+			s=checkTime(s);
+			h = checkTime(h);
+			document.getElementById('s').innerHTML=h+":"+m+":"+s + ampm;
+			t=setTimeout('startTime()',500);
+		};
+		function checkTime(i){
+			if(i<10){i = "0" + i;};
+			return i;
+		};
+		startTime();
+		document.getElementById('b').innerHTML=d.getFullYear()+"-"+ y +"-"+ r +week() ;
+	</script>
+</body>
+</html>
