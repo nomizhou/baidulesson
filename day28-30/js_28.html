@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.email-sug {
+			width: 160px;
+			padding: 0;
+			margin: 0;
+		}
+		.email-sug li:hover{
+			background-color: pink;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<input id="email-input" type="text">
+		<ul id="email-sug-wrapper" class="email-sug"></ul>
+	</div>
+
+	<script type="text/javascript">
+		var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+
+		var input = document.getElementById('email-input');
+		var lists = document.querySelector('#email-sug-wrapper');
+		var nowSelectTipIndex = 0;
+		//input.onkeydown=function keydown(event) {
+		//	console.log('keydown');
+		//};  //按下键盘键
+		//input.onkeypress=function keypress(event){
+		//	console.log(event.keyCode);
+        //	console.log(event.charCode);
+        //	console.log('keypress');
+		//};  //紧接着keydown事件触发（只有按下字符键时触发）
+		//input.onkeyup=function keyup(event) {
+        //	console.log('keyup');
+    	//};  //释放键盘键
+
+    	input.onkeyup = function (){
+			allli();
+    		listsdisplay();
+    		reselect();
+    	};
+
+    	function getContent(){
+    		var content = input.value.trim();
+    		return HtmlUtil.htmlEncode(content);
+    	};
+
+    	// function listContent(){
+    	// 	var c = getContent();
+    	// 	var str = "";
+    	// 	var q = c.indexOf('@');
+    	// 	if( q > -1){
+    	// 		c= c.slice(0,q);
+    	// 	};
+    	// 	for(var i = 0; i<postfixList.length ; i++){
+    	// 		str +="<li>"+c+"@"+postfixList[i]+"</li>";
+    	// 	}
+    	// 	return str;
+    	// };
+
+    	function listContent(){	
+    		var c = getContent();
+    		var str = "";
+    		var n;
+    		if(c.indexOf('@') > -1){
+    			n=c.slice(c.indexOf('@') +1);
+    			c=c.slice(0,c.indexOf("@"));
+    		};
+    		for (var i = 0; i<postfixList.length ; i++){
+    			if(postfixList[i].indexOf(n) > -1){
+    				str += "<li>" + c +"@" +postfixList[i]+"</li>"
+    			};
+    		};
+    		if(str==""){
+    			for(var i = 0; i < postfixList.length; i++){
+    				str += "<li>" + c + "@" + postfixList[i] + "</li>";
+    			};
+    		};
+    		return str;	
+    	};
+
+    	function allli(){
+    		lists.innerHTML=listContent();
+    		lists.children[nowSelectTipIndex] && (lists.children[nowSelectTipIndex].style.backgroundColor = "#AFEEEE");
+    	}
+
+    	function listsdisplay(){
+    		if(input.value.trim() ==""){
+    			hiddenlist();
+    		}else{
+    			showlist();
+    		};
+    	};
+
+    	function showlist(){
+    		lists.style.display = 'block';
+    	};
+
+    	function hiddenlist(){
+    		lists.style.display = 'none';
+    	};
+
+    	lists.addEventListener("click", function(e) {
+            var content = e.target.innerHTML;
+            input.value = HtmlUtil.htmlDecode(content);
+            hiddenlist();
+        });
+
+        var HtmlUtil = {
+        	htmlEncode: function(html){
+        		var temp = document.createElement("div");
+        		(temp.textContent != undefined) ? (temp.textContent = html) : (temp.innerText = html);
+        		var output = temp.innerHTML;
+        		temp = null;
+        		return output;
+        	},
+        	htmlDecode: function(text) {
+                var temp = document.createElement("div");
+                temp.innerHTML = text;
+                var output = temp.innerText || temp.textContent;
+                temp = null;
+                return output;
+            },
+        };
+
+        function reselect(){
+        	nowSelectTipIndex = 0;
+        }
+
+        input.addEventListener('keyup',function(e){
+        	if (lists.children[nowSelectTipIndex]){
+        		if (e.keyCode == 38){
+        			if (nowSelectTipIndex != 0){
+        				nowSelectTipIndex -= 1;
+        			}else{
+        				nowSelectTipIndex = lists.childElementCount - 1;
+        			}
+        		}else if(e.keyCode == 40){
+        			if (nowSelectTipIndex < lists.childElementCount - 1){
+        				nowSelectTipIndex +=1;
+        			}else{
+        				nowSelectTipIndex = 0;
+        			}
+        		}else if(e.keyCode == 13){
+        			var content = lists.children[nowSelectTipIndex].innerHTML;
+        			input.value = HtmlUtil.htmlDecode(content);
+        			hiddenlist();
+        		};
+        	};
+        })
+	</script>
+</body>
+</html>
