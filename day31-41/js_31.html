@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		table {
+			text-align: center;
+			border-collapse: collapse;
+			margin: 0 auto;
+		}
+		th , td {
+			height: 20px;
+			width: 50px;
+			border: 1px solid skyblue;
+		}
+	</style>
+</head>
+<body>
+	<select id="region-select">
+    	<option >华东</option>
+    	<option >华南</option>
+    	<option >华北</option>
+	</select>
+	<select id="product-select">
+        <option>手机</option>
+        <option>笔记本</option>
+        <option>智能音箱</option>
+    </select>
+
+    <div id="region-radio-wrapper"></div>
+	<div id="product-radio-wrapper"></div>
+
+	<div id="table-wrapper"></div>
+
+	<script src="ife31data.js"></script>
+	<script type="text/javascript">
+		var region = document.getElementById('region-select');
+		var table = document.getElementById('table-wrapper');
+		var product = document.getElementById('product-select');
+		
+		region.onchange = function(){
+			renderForm();
+		};
+
+		product.onchange = function(){
+			renderForm();
+		};
+
+		function getDate(){
+			var list=[];
+			for(var i=0; i<sourceData.length; i++){
+				if(sourceData[i].region == region.value && sourceData[i].product == product.value){
+					list.push(sourceData[i]);
+				};
+			};
+			return list;
+		};
+
+		function renderForm(){
+			var dat = getDate();
+			var str = "<table><tr><th>商品</th><th>地区</th>";
+			for(var i=1;i<=12;i++){
+				str += "<th>" + i + "月</th>";
+			}
+			str+ "</tr>";
+			for(var n=0;n<dat.length;n++){
+				str += "<tr><td>" + dat[n].product + "</td><td>" + dat[n].region + "</td>";
+				for(var m=0;m<12;m++){
+					str += "<td>" + dat[n].sale[m] + "</td>";
+				};
+				str += "</tr>";
+			};
+			 str += "</table>";
+			 table.innerHTML = str;
+		};
+
+		var regions= [[1, "华东"],[2, "华北"],[3, "华南"]];
+		var products = [[1,"手机"],[2,"笔记本"],[3,"智能音箱"]];
+		createCheckBox("region-radio-wrapper", regions);
+		createCheckBox("product-radio-wrapper", products);
+		function getDate2(){
+			var list=[];
+			var str="";
+			for(var i=1;i<=3;i++){
+				if(document.getElementById('region-radio-wrapper').children[i].checked==true){
+					str += regions[i-1][1];
+				};
+				if(document.getElementById("product-radio-wrapper").children[i].checked == true){
+					str += products[i-1][1];
+				};
+			};
+			for(var i=0;i<sourceData.length;i++){
+				if (str.indexOf(sourceData[i].region) > -1 && str.indexOf(sourceData[i].product) > -1) {
+					list.push(sourceData[i]);
+				}
+			};
+			return list;
+		};
+
+		function renderForm2(){
+			var dat = getDate2();
+			var re = 0, pr = 0;
+			for(var i = 1;i<=3;i++){
+				if(document.getElementById("region-radio-wrapper").children[i].checked == true){
+					re++;
+				};
+				if(document.getElementById("product-radio-wrapper").children[i].checked == true){
+					pr++;
+				};
+			};
+			var str = "<table><tr>";
+			if(re==1&&pr>1){
+				str += "<th>地区</th><th>商品</th>";
+			}else{
+				str += "<th>商品</th><th>地区</th>";
+			};
+			for(var i=1;i<=12;i++){
+				 str += "<th>" + i + "月</th>";
+			};
+			str+="</tr>";
+
+			for(var i=0;i<dat.length;i++){
+				if(re==1&&pr==0){
+					if(i% pr ==0){
+						str += "<tr><td rowspan='" + pr + "'>" + dat[i].region + "</td><td>" + dat[i].product + "</td>";
+					}else {
+						str += "<tr><td>" + dat[i].product + "</td>";
+					}
+				}else if(re>1){
+					if(i%re==0){
+						str += "<tr><td rowspan='" + re + "'>" + dat[i].product + "</td><td>" + dat[i].region + "</td>";
+					}else{
+						str += "<tr><td>" + dat[i].region + "</td>";
+					}
+				}else {
+					str += "<tr><td>" + dat[i].product + "</td><td>" + dat[i].region + "</td>";
+				};
+				for (var n= 0; n< 12; n++){
+					str += "<td>" + dat[i].sale[n]+ "</td>";
+				};
+				str +="</tr>";
+
+			};
+			str +="</table>";
+			table.innerHTML= str;
+		};
+		
+		function createCheckBox(ID,args){
+			var CheckBoxContainer = document.getElementById(ID);
+			var count = args.length;
+			var str = '<input type="checkBox" box="all">全选';
+			for(var i=0;i<args.length;i++){
+				str += '<input type="checkBox" value="' + args[i][0] + '">' + args[i][1];
+			};
+			CheckBoxContainer.innerHTML = str;
+			CheckBoxContainer.addEventListener("click", function(e){
+				if (e.target.type == "checkbox"){
+					if (e.target.getAttribute("box")){
+						if (CheckBoxContainer.children[0].checked){
+							for (var i = 1; i<= count; i++){
+								 CheckBoxContainer.children[i].checked = true;
+							}
+						}else{
+							for (var i= 1; i<= count; i++){
+								CheckBoxContainer.children[i].checked = false;
+							}
+						}
+					}else{
+						var i = 0;
+						for (var m = 1; m <= count; m++){
+							if (CheckBoxContainer.children[m].checked){
+								i++;
+							}
+						};
+						switch (i) {
+							case 0:
+								alert("至少选中一个按钮");
+								e.preventDefault();
+								break;
+							case count:
+								CheckBoxContainer.children[0].checked = true;
+								break;
+							default:
+								CheckBoxContainer.children[0].checked = false;
+								break;
+						};
+					}
+				}
+			});
+			CheckBoxContainer.addEventListener("change", function(){
+				renderForm2();
+			});
+		};
+	</script>
+		
+</body>
+</html>
